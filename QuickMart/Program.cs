@@ -8,7 +8,7 @@ namespace QuickMart
         {
 
             List<string> purchasedItemNames = new List<string>();
-            List<string> itemList = new List<string>(); //{Chillies, Tomatoes, Apples or Mil
+            List<string> itemList = new List<string> { "Chillies", "Tomatoes", "Apples", "Milk" };
             string loyalityCard = null;
 
             double subTotal = 0.0;
@@ -17,6 +17,7 @@ namespace QuickMart
             double grossAmount = 0.0;
             double tax;
             double discountedPrice = 0.0;
+            Console.WriteLine("Available Items: " + string.Join(", ", itemList));
 
             while (true)
             {
@@ -26,6 +27,7 @@ namespace QuickMart
                 if (purchasedItemNames.Contains(item))
                 {
                     Console.WriteLine($"You have already purchased the {item}.");
+                    Console.WriteLine("Remaining items: " + string.Join(", ", itemList));
                     continue;
                 }
                 else
@@ -56,12 +58,28 @@ namespace QuickMart
                 }
 
 
-                // get weight 
-                Console.WriteLine($"How much did the {item}s weigh, in total (in lbs):");
+                // get item weight according to the lb or carton
+                if (item == "Chillies" || item == "Tomatoes" || item == "Apples")
+                {
+                    Console.WriteLine($"How much did the {item}s weigh, in total (in lb):");
+                    
+                }
+                else
+                {
+                    Console.WriteLine($"How much did the {item}s weigh, in total (in carton):");
+                    
+                }
+
                 double itemWeigh = Convert.ToDouble(Console.ReadLine());
 
+                //calculate initial amount
                 double itemAmount = itemPrice * itemWeigh;
 
+
+                // remove item from the item list
+                itemList.Remove(item);
+
+                //add purshased items to purchasedItemNames list
                 purchasedItemNames.Add(item);
 
                 //get wheather is there a loyality card at once
