@@ -8,10 +8,8 @@ namespace QuickMart
         {
 
             List<string> purchasedItemNames = new List<string>();
-            List<double> purchasedItemPrices = new List<double>();
-
-            
-            //double itemAmount = 0.0;
+            List<string> itemList = new List<string>(); //{Chillies, Tomatoes, Apples or Mil
+            string loyalityCard = null;
 
             double subTotal = 0.0;
             bool hasItemDiscount = false;
@@ -19,16 +17,10 @@ namespace QuickMart
             double grossAmount = 0.0;
             double tax;
             double discountedPrice = 0.0;
-            int itemCount;
-
-            Console.WriteLine("=================================================");
-
 
             while (true)
             {
-
-
-                Console.WriteLine("Please enter the name of the sales item purshased: {Chillies, Tomatoes, Apples or Milk} or enter 'done' to finish");
+                Console.WriteLine("Please enter the name of the sales item purshased or enter 'done' to finish");
                 string item = Console.ReadLine() ?? "default";
 
                 if (purchasedItemNames.Contains(item))
@@ -38,28 +30,25 @@ namespace QuickMart
                 }
                 else
                 {
-
                     if (item.ToLower() == "done")
                     {
                         break;
-
                     }
                 }
+
+                //determine the base price
 
                 if (item == "Chillies")
                 {
                     itemPrice = 1.29;
-                    hasItemDiscount = true;
                 }
                 else if (item == "Tomatoes")
                 {
                     itemPrice = 1.45;
-                    hasItemDiscount = true;
                 }
                 else if (item == "Apples")
                 {
                     itemPrice = 1.75;
-                    hasItemDiscount = true;
                 }
                 else
                 {
@@ -67,20 +56,20 @@ namespace QuickMart
                 }
 
 
-                // get weight
+                // get weight 
                 Console.WriteLine($"How much did the {item}s weigh, in total (in lbs):");
                 double itemWeigh = Convert.ToDouble(Console.ReadLine());
 
                 double itemAmount = itemPrice * itemWeigh;
 
                 purchasedItemNames.Add(item);
-                purchasedItemPrices.Add(itemAmount);
 
-
-                //get wheather is there a loyality card
-                Console.WriteLine($"Do you have a Loyality Card(Yes/No)?:");
-                string loyalityCard = Console.ReadLine() ?? "default";
-
+                //get wheather is there a loyality card at once
+                if (loyalityCard == null)
+                {
+                    Console.WriteLine($"Do you have a Loyality Card(Yes/No)?:");
+                    loyalityCard = Console.ReadLine() ?? "default";
+                }
 
                 // check if the items has discount or not
                 if (item == "Chillies" || item == "Tomatoes" || item == "Apples")
@@ -93,16 +82,13 @@ namespace QuickMart
                     hasItemDiscount = false;
                 }
 
-
-
                 // get used store bag count
                 Console.WriteLine($"How much store bags do you need?");
                 int storeBagsCount = Convert.ToInt32(Console.ReadLine());
-                //foreach (double itemP in purchasedItemPrices)
                 double storeBagsCost = storeBagsCount * 0.50;
 
 
-                //
+                //calculate discounted price
                 if (loyalityCard == "Yes" && hasItemDiscount)
                 {
                     discountedPrice = itemAmount * 0.1;
@@ -113,7 +99,7 @@ namespace QuickMart
 
 
                 Console.WriteLine("Paboda Jayamali Senevirathne, 8927315, Psenevirathne7315@conestogac.on.ca");
-                Console.WriteLine("================================================================");
+                Console.WriteLine("=========================================================================");
 
                 Console.WriteLine($"Item : {item}");
                 Console.WriteLine($"Quantity : {itemWeigh}");
@@ -122,7 +108,7 @@ namespace QuickMart
                 Console.WriteLine($"Price of Bags: {storeBagsCost}");
                 Console.WriteLine($"Loyality Card: {loyalityCard}");
 
-                Console.WriteLine("--------------------------------------------");
+                Console.WriteLine("-------------------------------------------------------------------------");
                 Console.WriteLine($"SubTotal : {grossAmount}");
 
                 if (hasItemDiscount)
@@ -146,7 +132,7 @@ namespace QuickMart
 
 
 
-                Console.WriteLine("================================================================");
+                Console.WriteLine("========================================================================");
                 Console.WriteLine($"TOTAL: {subTotal}");
 
 
