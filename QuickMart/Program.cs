@@ -76,12 +76,12 @@ namespace QuickMart
                 if (item == "chillies" || item == "tomatoes" || item == "apples")
                 {
                     Console.WriteLine($"How much did the {item} weigh, in total (in lb):");
-                    
+
                 }
                 else
                 {
                     Console.WriteLine($"How much did the {item} weigh, in total (in carton):");
-                    
+
                 }
 
                 //validate weight
@@ -122,7 +122,7 @@ namespace QuickMart
 
                 if (item == "chillies" || item == "tomatoes" || item == "apples")
                 {
-                    
+
                     hasItemDiscount = true;
                 }
                 else
@@ -130,7 +130,7 @@ namespace QuickMart
                     hasItemDiscount = false;
                 }
 
-                
+
 
                 //calculate discounted price
                 if (loyaltyCard == "yes" && hasItemDiscount)
@@ -141,7 +141,7 @@ namespace QuickMart
 
                 subTotal += itemAmount;
             }
-    
+
             //calulate store bag cost
             Console.WriteLine($"How many store bags do you need?");
             if (!int.TryParse(Console.ReadLine(), out int storeBagsCount) || storeBagsCount < 0)
@@ -153,8 +153,8 @@ namespace QuickMart
             double storeBagsCost = storeBagsCount * 0.50;
 
             Console.WriteLine("=========================================================================\n");
-            Console.WriteLine("---------------------------QUICK MART SHOP-------------------------------\n");
-            Console.WriteLine("-------------------------------Receipt-----------------------------------\n");
+            Console.WriteLine("***************************QUICK MART SHOP*******************************\n");
+            Console.WriteLine("*******************************Receipt***********************************\n");
             Console.WriteLine("=========================================================================\n");
 
 
@@ -163,12 +163,12 @@ namespace QuickMart
             {
                 Console.WriteLine($"Item: {purchasedItemNames[i]}\nQty: {purchasedItemWeights[i]}\nBase: ${purchasedItemPrices[i]}\n");
             }
-            
+
             Console.WriteLine($"Number of Bags: {storeBagsCount}");
             Console.WriteLine($"Price of Bags: {storeBagsCost}");
             Console.WriteLine($"Loyalty Card: {loyaltyCard}");
 
-            Console.WriteLine("\n-------------------------------------------------------------------------\n");
+            Console.WriteLine("\n-----------------------------------------------------------------------\n");
             subTotal = subTotal + storeBagsCost;
             Console.WriteLine($"Sub Total : {subTotal}");
 
@@ -188,9 +188,9 @@ namespace QuickMart
 
             Console.WriteLine($"Tax: {tax:F2}\n");
 
-            Console.WriteLine("========================================================================\n");
+            Console.WriteLine("==========================================================================\n");
             Console.WriteLine($"TOTAL: {subTotal:F2}");
-            Console.WriteLine("========================================================================\n");
+            Console.WriteLine("==========================================================================\n");
 
         }
     }
