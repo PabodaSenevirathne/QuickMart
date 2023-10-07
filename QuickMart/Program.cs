@@ -24,7 +24,9 @@ namespace QuickMart
             double discountedPrice = 0.0;
             double totalDiscount = 0.0;
 
+            Console.WriteLine("Paboda Jayamali Senevirathne, 8927315, Psenevirathne7315@conestogac.on.ca\n");
 
+            Console.WriteLine("=========================================================================\n");
             // display available item list
             Console.WriteLine("Available Items: " + string.Join(", ", itemList));
 
@@ -107,23 +109,26 @@ namespace QuickMart
                 if (loyalityCard == "")
                 {
                     Console.WriteLine($"Do you have a Loyality Card(Yes/No)?:");
-                    loyalityCard = Console.ReadLine() ?? "default";
+                    loyalityCard = Console.ReadLine()?.ToLower() ?? "default";
+
                 }
                 bool hasItemDiscount;
 
                 // check if the items has discount or not before calculate discounted price
                 if (item == "chillies" || item == "tomatoes" || item == "apples")
                 {
-
+                    
                     hasItemDiscount = true;
                 }
                 else
                 {
                     hasItemDiscount = false;
                 }
+
+              
              
                 //calculate discounted price
-                if (loyalityCard == "Yes" && hasItemDiscount)
+                if (loyalityCard == "yes" && hasItemDiscount)
                 {
                     discountedPrice = itemAmount * 0.1;
                     totalDiscount += discountedPrice;
@@ -145,7 +150,8 @@ namespace QuickMart
            // storeBagsCount = Convert.ToInt32(Console.ReadLine());
             double storeBagsCost = storeBagsCount * 0.50;
             Console.WriteLine("=========================================================================\n");
-            Console.WriteLine("Paboda Jayamali Senevirathne, 8927315, Psenevirathne7315@conestogac.on.ca\n");
+            Console.WriteLine("---------------------------QUICK MART SHOP-------------------------------\n");
+            Console.WriteLine("-------------------------------Reciept-----------------------------------\n");
             Console.WriteLine("=========================================================================\n");
             for (int i = 0; i < purchasedItemNames.Count; i++)
             {
